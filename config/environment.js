@@ -19,6 +19,25 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['simple-auth'] = {
+    authorizer: 'simple-auth-authorizer:devise'
+  };
+
+  ENV['simple-auth-devise'] = {
+    serverTokenEndpoint: 'http://localhost:3000/api/v1/sessions/',
+    tokenAttributeName: 'auth_token'
+  }
+
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': "'self'",
+    'font-src': "'self'",
+    'connect-src': "'self' http://localhost:3000",
+    'img-src': "'self'",
+    'style-src': "'self'",
+    'media-src': "'self'"
+  };  
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
