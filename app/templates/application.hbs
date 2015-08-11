@@ -1,6 +1,10 @@
 <h2 id="title">Welcome to Ember.js</h2>
+{{#link-to 'users'}}Users{{/link-to}}
+<br>
+{{#link-to 'queries'}}Queries{{/link-to}}
+<br>
 {{#if session.isAuthenticated}}
-  <a {{ action 'invalidateSession' }}>{{session.currentUser.fullName}} Logout</a>
+  <a {{ action 'invalidateSession' }}>{{session.content.secure.auth_token}} Logout</a>
 {{else}}
   {{#link-to 'login'}}Login{{/link-to}}
 {{/if}}

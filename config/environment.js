@@ -20,12 +20,13 @@ module.exports = function(environment) {
   };
 
   ENV['simple-auth'] = {
-    authorizer: 'simple-auth-authorizer:devise'
+    authorizer: 'simple-auth-authorizer:devise',
+    crossOriginWhitelist: ['http://localhost:3000'],    
   };
 
   ENV['simple-auth-devise'] = {
     serverTokenEndpoint: 'http://localhost:3000/api/v1/sessions/',
-    tokenAttributeName: 'auth_token'
+    tokenAttributeName: 'auth_token',
   }
 
   ENV.contentSecurityPolicy = {
