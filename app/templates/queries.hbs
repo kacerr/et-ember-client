@@ -2,3 +2,122 @@
 <div>
 Here we have some content for queries
 </div>
+<br>
+<form method="post" {{action "sendRequest" on="submit"}}>
+  <button type="submit" class="btn btn-default">Submit</button>
+  <div class="form-group">
+    <label for="amadeusEndpoint">Amadeus endpoint</label>
+  The currently selected item: {{ selectedEndpoint.title }}: {{ selectedEndpoint.url }}.
+
+  {{! myItems is an array of strings: ['first', 'second', 'third',...] }}
+  {{! This uses the `action` and `mut` helpers to pass in an action that
+      will update the (outer scope) ` selectedEndpoint` property with the user's
+      selection. }}
+  {{amadeus-endpoint-select content=amadeusEndpoints selectedValue=amadeusEndpointSelected action=(action (mut  selectedEndpoint))}}
+  </div>
+  <div class="clearfix" style="border-bottom: 1px solid"></div>
+  <div class="col-md-6">
+    <div class="row">
+      From: {{ input name="from" value=from }}
+      To: {{ input name="to" value=to }}
+    </div>
+    <div class="row">
+      Depart: {{ input name="departureDate" value=departureDate }}
+      Return: {{ input name="returnDate" value=returnDate }}
+    </div>
+    <div class="row">
+      Adults: {{ input name="adults" value=adults size=4 }} &nbsp;&nbsp;
+      Children: {{ input name="children" value=children size=4 }} &nbsp;&nbsp;
+      Infants: {{ input name="infants" value=infants size=4 }} &nbsp;&nbsp;
+    </div>
+    <button {{ action "searchFlight" on="click"}}>Search Flight</button>
+  </div>
+  <div class="col-md-6">
+  </div>
+  <div class="">
+    <div>
+      <div >
+      dsadadasdasda
+      </div>
+    </div>
+  </div>
+  <div class="clearfix" style="margin-bottom: 10px; border-bottom: 1px solid"></div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="XMLQuery">XML Query</label>
+      {{textarea name=xmlQuery value=xmlQuery cols="40" rows="20" class="form-control" id="xmlQuery" placeholder="Enter XML you would like to sent to amadeus"}}
+    </div>
+  </div>
+  <div class="col-md-6">
+      <label for="Result">Query result: </label> {{ resultCode }} {{{ resultReceived }}} <b>duration:</b> {{{requestProcessingDuration}}}
+      <textarea cols="40" rows="20" class="form-control" id="xmlQueryResult" placeholder="Query result">
+        
+      </textarea>
+
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<br>
+
+
+
+      <div class="hidden" name="xmlQueryDefault" id="xmlQueryDefault">&lt;Fare_MasterPricerTravelBoardSearch xmlns=&quot;http://xml.amadeus.com/FMPTBQ_13_1_1A&quot; &gt;
+  &lt;numberOfUnit&gt;
+  &lt;unitNumberDetail&gt;
+  &lt;numberOfUnits&gt;3&lt;/numberOfUnits&gt;
+  &lt;typeOfUnit&gt;PX&lt;/typeOfUnit&gt;
+  &lt;/unitNumberDetail&gt;
+  &lt;unitNumberDetail&gt;
+  &lt;numberOfUnits&gt;200&lt;/numberOfUnits&gt;
+  &lt;typeOfUnit&gt;RC&lt;/typeOfUnit&gt;
+  &lt;/unitNumberDetail&gt;
+  &lt;/numberOfUnit&gt;
+  &lt;paxReference&gt;
+  &lt;ptc&gt;ADT&lt;/ptc&gt;
+  &lt;traveller&gt;
+  &lt;ref&gt;1&lt;/ref&gt;
+  &lt;/traveller&gt;
+  &lt;traveller&gt;
+  &lt;ref&gt;2&lt;/ref&gt;
+  &lt;/traveller&gt;
+  &lt;/paxReference&gt;
+  &lt;paxReference&gt;
+  &lt;ptc&gt;CH&lt;/ptc&gt;
+  &lt;traveller&gt;
+  &lt;ref&gt;3&lt;/ref&gt;
+  &lt;/traveller&gt;
+  &lt;/paxReference&gt;
+  &lt;paxReference&gt;
+  &lt;ptc&gt;INF&lt;/ptc&gt;
+  &lt;traveller&gt;
+  &lt;ref&gt;1&lt;/ref&gt;
+  &lt;infantIndicator&gt;1&lt;/infantIndicator&gt;
+  &lt;/traveller&gt;
+  &lt;/paxReference&gt;
+  &lt;itinerary&gt;
+  &lt;requestedSegmentRef&gt;
+  &lt;segRef&gt;1&lt;/segRef&gt;
+  &lt;/requestedSegmentRef&gt;
+  &lt;departureLocalization&gt;
+  &lt;depMultiCity&gt;
+  &lt;locationId&gt;LON&lt;/locationId&gt;
+  &lt;/depMultiCity&gt;
+  &lt;/departureLocalization&gt;
+  &lt;arrivalLocalization&gt;
+  &lt;arrivalMultiCity&gt;
+  &lt;locationId&gt;NYC&lt;/locationId&gt;
+  &lt;/arrivalMultiCity&gt;
+  &lt;/arrivalLocalization&gt;
+  &lt;timeDetails&gt;
+  &lt;firstDateTimeDetail&gt;
+  &lt;date&gt;250803&lt;/date&gt;
+  &lt;/firstDateTimeDetail&gt;
+  &lt;/timeDetails&gt;
+  &lt;/itinerary&gt;
+  &lt;/Fare_MasterPricerTravelBoardSearch&gt;
+      </div>
+
+<script>
+  $('#xmlQuery').val($('#xmlQueryDefault').text());
+</script>

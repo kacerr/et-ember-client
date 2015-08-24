@@ -6,6 +6,11 @@ module.exports = function(defaults) {
     // Add options here
   });
 
+  app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
+  app.import('bower_components/bootstrap/dist/css/bootstrap.min.css');
+
+  app.import('vendor/reset.css');
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

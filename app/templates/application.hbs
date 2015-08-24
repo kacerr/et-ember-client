@@ -1,10 +1,10 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<h2 id="title">ET Concierge (concept app)</h2>
 {{#link-to 'users'}}Users{{/link-to}}
-<br>
+&nbsp;
 {{#link-to 'queries'}}Queries{{/link-to}}
 <br>
 {{#if session.isAuthenticated}}
-  <a {{ action 'invalidateSession' }}>{{session.content.secure.auth_token}} Logout</a>
+  Logged user: {{session.content.secure.email}} ({{session.content.secure.auth_token}}) <a {{ action 'invalidateSession' }}>Logout</a>
 {{else}}
   {{#link-to 'login'}}Login{{/link-to}}
 {{/if}}
