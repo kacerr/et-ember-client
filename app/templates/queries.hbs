@@ -26,9 +26,16 @@ Here we have some content for queries
       Return: {{ input name="returnDate" value=returnDate }}
     </div>
     <div class="row">
+      Depart time window : {{ input name="departureTimeWindow" value=departureTimeWindow size=3 }}
+      Return time window: {{ input name="returnTimeWindow" value=returnTimeWindow size=3 }}
+    </div>
+    <div class="row">
       Adults: {{ input name="adults" value=adults size=4 }} &nbsp;&nbsp;
       Children: {{ input name="children" value=children size=4 }} &nbsp;&nbsp;
       Infants: {{ input name="infants" value=infants size=4 }} &nbsp;&nbsp;
+    </div>
+    <div class="row">
+      Direct flight: {{input type="checkbox" name="directFlight" checked=directFlight}}
     </div>
     <button {{ action "searchFlight" on="click"}}>Search Flight</button>
   </div>

@@ -10,10 +10,13 @@ export default Ember.Controller.extend({
   from: "PRG",
   to: "YYZ",
   departureDate: "10.1.2016 8:00",
+  departureTimeWindow: 3,
   returnDate: "10.3.2016 8:00",
+  returnTimeWindow: 3,
   adults: 3,
   children: 1,
   infants: 0,
+  directFlight: true,
   cfg: config,
 
   amadeusEndpoints: [
@@ -69,10 +72,13 @@ export default Ember.Controller.extend({
           from: this.get('from'),
           to: this.get('to'),
           departureDate: this.get('departureDate'),
+          departureTimeWindow: this.get('departureTimeWindow'),
           returnDate: this.get('returnDate'),
+          returnTimeWindow: this.get('returnTimeWindow'),
           adults: this.get('adults'),
           children: this.get('children'),
           infants: this.get('infants'),
+          directFlight: this.get('directFlight'),
         },
         success: function(data) {
           $('#xmlQueryResult').val(data.xmlContent);
